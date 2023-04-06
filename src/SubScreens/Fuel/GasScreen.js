@@ -22,13 +22,13 @@ const GasScreen = ({navigation}) => {
           <Image source={image.notification} style={{ height: 25, width: 25, }} resizeMode={'contain'} />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('mechanic')} >
+      <TouchableOpacity onPress={() => navigation.navigate('lpg')} >
           <View style={styles.viewStyle}>
             <Image source={image.lpg} resizeMode={'contain'} style={{ height: 100, width: 100, marginLeft: 20 }} />
             <Text style={{ marginLeft: 15, fontWeight: 'bold', fontSize: 30, marginTop: 35, marginLeft: 30 }} >LPG Gas</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('puncture')} >
+        <TouchableOpacity onPress={() => navigation.navigate('cng')} >
           <View style={styles.viewStyle}>
             <Image source={image.cng} resizeMode={'contain'} style={{ height: 100, width: 100, marginLeft: 20 }} />
             <Text style={{ marginLeft: 15, fontWeight: 'bold', fontSize: 30, marginTop: 30, marginLeft: 30 }} >CNG Gas</Text>

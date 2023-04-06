@@ -2,6 +2,7 @@ import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 import React from 'react'
 import { image } from '../Helper/ImageHelper'
 // import { TouchableOpacity } from 'react-native-gesture-handler'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 
 const TabBar = ({ navigation }) => {
     const handl1 = () => {

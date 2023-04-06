@@ -138,7 +138,7 @@ const StackNavigation = ({navigation}) => {
         <Stack.Screen
         name='tracker'
         component={TrackerScreen}
-        options={{headerShown:false}}
+        options={{headerShown:true}}
         />
 
        

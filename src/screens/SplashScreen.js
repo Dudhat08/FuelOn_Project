@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import React, { useEffect } from 'react'
 import { image } from '../Helper/ImageHelper'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 
 const SplashScreen = ({navigation}) => {
     useEffect(()=> {
@@ -9,11 +10,11 @@ const SplashScreen = ({navigation}) => {
         },2000)
     },[])
   return (
-    <View>
     <TouchableOpacity onPress={()=>navigation.navigate('vc')}>
-      <Image source={image.splash} resizeMode={'cover'} style={{height:900,width:403,}}  />
-      </TouchableOpacity>
+    <View >
+      <Image source={image.splash} style={{height:'100%',width:'100%' }} />
     </View>
+      </TouchableOpacity>
   )
 }
 

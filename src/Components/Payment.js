@@ -1,7 +1,7 @@
 import { Image, ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { image } from '../Helper/ImageHelper'
-
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 const Payment = ({navigation}) => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#F4C50B', }}>

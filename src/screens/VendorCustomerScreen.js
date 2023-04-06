@@ -1,57 +1,44 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, TextInput, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { image } from '../Helper/ImageHelper'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 const VendorCustomerScreen = ({ navigation }) => {
-    const [press1, setPress1] = useState('');
-    const [press2, setPress2] = useState('');
-    const [press3, setPress3] = useState('');
-    const [press4, setPress4] = useState('');
-    const [press5, setPress5] = useState('');
-    const [press6, setPress6] = useState('');
-    const [press7, setPress7] = useState('');
-    let flag;
-    if (press1 == true && press2 == false) {
-        flag = 1;
-    }
-    else if (press1 == false && press2 == true) {
-        flag = 0;
-    }
-    else {
-        let alert = "choose any one"
-    }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#F4C50B', justifyContent:'space-around'}}>
             <View style={{
-                alignItems: 'center',
-                marginTop: 30,
+                marginLeft:wp(11.46),
                 shadowColor: '#171717',
                 shadowOffset: { width: -2, height: 4 },
                 shadowOpacity: 0.2,
                 shadowRadius: 3,
             }}>
-                <Text style={{ fontSize: 40, fontWeight: 'bold' }}>Welcome to FuelOn</Text>
+                <Text style={{ fontSize: RFValue(40,812),fontWeight: 'bold'}}>Welcome</Text>
+                <Text style={{ fontSize: RFValue(40,812),fontWeight: 'bold',marginTop:hp(1.23)}}>FuelOn</Text>
+            </View>
+            <View style={{alignItems:'center',marginTop:hp(-15)}}>
+            <TouchableOpacity style={styles.TextStyle} onPress={() => navigation.navigate('choose')}>
+                <Text style={{ fontSize:RFValue (24,812)}}>Service provider</Text>
+            </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.TextStyle} onPress={() => navigation.navigate('choose')}>
-                <Text style={{ fontSize: 25,}}>Service provider</Text>
-            </TouchableOpacity>
-
+            <View  style={{alignItems:'center',marginTop:hp(-20)}}>
             <TouchableOpacity style={styles.TextStyle} onPress={() => navigation.navigate('signUp')}>
-                <Text style={{ fontSize: 25 }}>Need a service</Text>
+                <Text style={{ fontSize: RFValue(24,812) }}>Need a service</Text>
             </TouchableOpacity>
-
+            </View>
            
 
-            <TouchableOpacity style={{ marginTop: 200, alignSelf: 'center', marginTop: 300 }} onPress={() => navigation.navigate('login')} >
+            <TouchableOpacity style={{alignItems:'center'}} onPress={() => navigation.navigate('login')} >
                 <Text style={{
-                    fontSize: 22,
+                    fontSize: RFValue(22,812),
                     fontWeight: 'bold',
-                    marginLeft: 15,
                     shadowColor: '#171717',
                     shadowOffset: { width: -2, height: 4 },
                     shadowOpacity: 0.2,
                     shadowRadius: 3,
+                    alignItems:'center'
                 }}>Already have an account?</Text>
             </TouchableOpacity>
 
@@ -64,14 +51,10 @@ export default VendorCustomerScreen
 
 const styles = StyleSheet.create({
     TextStyle: {
-        flexDirection: 'row',
         backgroundColor: '#cecece',
         borderRadius: 20,
-        marginTop: 50,
-        padding: 15,
-        height: 60,
-        width: 325,
-        marginLeft: 40,
+        height: hp(7.28),
+        width: wp(80.66),
         shadowColor: '#171717',
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.5,
@@ -80,22 +63,4 @@ const styles = StyleSheet.create({
         alignItems:'center'
 
     },
-    iconStyle: {
-        height: 120,
-        width: 120,
-        marginLeft: 136.5,
-        marginTop: 100,
-        justifyContent: 'flex-end',
-        paddingVertical: 20,
-
-
-    },
-    textStyle3: {
-        fontWeight: 'bold',
-        fontSize: 26,
-        color: '#F4C50B',
-        alignSelf: 'center',
-
-    },
-
 })
