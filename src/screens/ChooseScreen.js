@@ -17,20 +17,25 @@ const ChooseScreen = ({ navigation }) => {
         shadowOpacity: 0.2,
         shadowRadius: 3,
       }}>
-        <TouchableOpacity style={{ height: hp(3.07), width: 25, marginLeft: 15, marginTop: 15 }} onPress={() => navigation.goBack('')}>
-          <Image source={image?.backicon} style={{ height: hp(3.07), width: 25, }} />
+        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66), marginLeft: wp(4), marginTop: hp(1.84) }} onPress={() => navigation.goBack('')}>
+          <Image source={image?.backicon} style={{ height: hp(3.07), width: wp(6.66), }} />
         </TouchableOpacity>
-        <Text style={{ fontSize: RFValue(40, 812), fontWeight: 'bold', marginLeft: 90 }}>FuelOn</Text>
-
+        <View style={{alignItems:'center'}}>
+        <Text style={{
+          fontSize: RFValue(40, 812),
+          fontWeight: 'bold',
+          marginLeft: wp(23)
+        }}>FuelOn</Text>
+        </View>
       </View>
       <View style={{
-        marginTop: hp(3.69) ,
+        marginTop: hp(3.69),
         width: wp(80.66),
         shadowColor: '#171717',
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
-        marginLeft:wp(10.66),
+        marginLeft: wp(10.66),
       }}>
         <Text style={{ fontSize: RFValue(40, 812), fontWeight: 'bold' }}>Choose which service you will provide</Text>
       </View>

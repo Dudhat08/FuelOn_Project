@@ -7,20 +7,26 @@ import { baseGestureHandlerProps } from 'react-native-gesture-handler/lib/typesc
 import BottomNavigation from '../Navigators/BottomNavgation.js';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import FuelButton from '../Components/FuelButton.js';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+
 
 const HomeScreen = ({ navigation }) => {
   const animation = useRef(null);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#F4C50B' }}>
       <View style={{
-        height: hp(6.15), flexDirection: 'row', borderBottomWidth: 1, borderRadius: 14, shadowColor: '#171717',
+        height: hp(6.15),
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderRadius: 14,
+        shadowColor: '#171717',
         shadowOffset: { width: -2, height: hp(0.49) },
         shadowOpacity: 0.2,
         shadowRadius: 3,
       }}>
 
-        <Text style={{ fontSize: 40, fontWeight: 'bold', marginLeft: 130 }}>FuelOn</Text>
-        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66), marginLeft: 83, marginTop: 15 }} onPress={() => navigation.navigate('Notifications')}>
+        <Text style={{ fontSize: RFValue(40, 812), fontWeight: 'bold', marginLeft: wp(34.66) }}>FuelOn</Text>
+        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66), marginLeft: wp(22.13), marginTop: hp(1.82) }} onPress={() => navigation.navigate('Notifications')}>
           <Image source={image.notification} style={{ height: hp(3.07), width: wp(6.66), }} resizeMode={'contain'} />
         </TouchableOpacity>
       </View>
@@ -28,10 +34,10 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.viewStyle1}>
           <View style={{ flexDirection: 'row', }}>
             <View>
-              <Text style={{fontWeight: 'bold', fontSize: 22, marginTop: 15,marginRight:wp(10.66)}}>Choose Your Fuel Type</Text>
+              <Text style={{ fontWeight: 'bold', fontSize: 22, marginTop: 15, marginRight: wp(10.66) }}>Choose Your Fuel Type</Text>
             </View>
-            <View style={{ justifyContent:'space-around' }}>
-              <TouchableOpacity style={{ marginTop: 12,height: hp(3), width: wp(10), justifyContent: 'center', }} onPress={() => navigation.navigate('fuel')}>
+            <View style={{ justifyContent: 'space-around' }}>
+              <TouchableOpacity style={{ marginTop: 12, height: hp(3), width: wp(10), justifyContent: 'center', }} onPress={() => navigation.navigate('fuel')}>
                 <Image source={image.forward} style={{ height: hp(4.92), width: wp(10.66), }} resizeMode='contain' />
               </TouchableOpacity>
             </View>
@@ -39,21 +45,21 @@ const HomeScreen = ({ navigation }) => {
           <View style={{ flexDirection: 'row', paddingTop: 15, paddingBottom: 15, }}>
             <View>
               <FuelButton
-              ScreenNavigator={()=>navigation.navigate('petrol')}
+                ScreenNavigator={() => navigation.navigate('petrol')}
                 Name={'Petrol'}
                 url={image.fuel}
               />
             </View>
             <View style={{ marginLeft: 7 }}>
               <FuelButton
-               ScreenNavigator={()=>navigation.navigate('gas')}
+                ScreenNavigator={() => navigation.navigate('gas')}
                 Name={'Gas'}
                 url={image.gas}
               />
             </View>
             <View style={{ marginLeft: 7 }}>
               <FuelButton
-               ScreenNavigator={()=>navigation.navigate('diesel')}
+                ScreenNavigator={() => navigation.navigate('diesel')}
                 Name={'Diesel'}
                 url={image.diesel}
               />
