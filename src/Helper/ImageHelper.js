@@ -38,5 +38,6 @@ export const image = {
     conditions:require('../../assets/terms-and-conditions.png'),
     phoneCall:require('../../assets/phone-call.png'),
     check:require('../../assets/check-mark.png'),
+    pin:require('../../assets/pin.png'),
 
 }

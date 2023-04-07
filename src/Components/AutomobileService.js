@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#cecece',
         borderRadius: 20,
         marginTop: 20,
-        padding: 15,
+        padding: hp(1.74),
         height: hp(6.15),
         width: wp(93.33),
         // marginLeft: 22,
