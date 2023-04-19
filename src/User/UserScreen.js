@@ -4,6 +4,7 @@ import { image } from '../Helper/ImageHelper'
 import * as Animatable from 'react-native-animatable';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import Header from '../Components/Header';
 
 const UserScreen = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -31,27 +32,11 @@ const UserScreen = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#F4C50B', }}>
-      <View style={{
-        height: hp(6.15),
-        flexDirection: 'row',
-        borderBottomWidth: 1,
-        borderRadius: 14,
-        shadowColor: '#171717',
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-      }}>
-        <TouchableOpacity style={{ height: hp(3.07), width: 25, marginLeft: 15, marginTop: 15 }} onPress={() => navigation.goBack('')}>
-          <Image source={image?.backicon} style={{ height: hp(3.07), width: 25, }} />
-        </TouchableOpacity>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ fontSize: RFValue(35, 812), fontWeight: 'bold', marginLeft: 95, }}>Profile</Text>
-        </View>
-        <TouchableOpacity style={{ height: hp(3.07), width: 25, marginLeft: 83, marginTop: 15 }} onPress={() => navigation.navigate('Notifications')}>
-          <Image source={image.notification} style={{ height: hp(3.07), width: 25, marginLeft: 10 }} resizeMode={'contain'} />
-        </TouchableOpacity>
-
-      </View>
+      <Header
+         Back={()=>navigation.goBack('')}
+         notifi={()=> navigation.navigate('Notifications')}
+         Name={'Profile'}
+       />
       <View style={{ justifyContent: 'space-around', alignItems: 'center', marginTop: hp(4.92) }}>
         <View
           style={{

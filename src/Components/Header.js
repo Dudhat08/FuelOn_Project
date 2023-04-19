@@ -9,6 +9,7 @@ const Header = ({navigation,Back,notifi,Name}) => {
   return (
     <View style={{
         height: hp(6.15), 
+        width:wp(95),
         flexDirection: 'row', 
         borderBottomWidth: 1, 
         borderRadius: 14, 
@@ -16,18 +17,20 @@ const Header = ({navigation,Back,notifi,Name}) => {
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
-        justifyContent:'space-around'
+        marginLeft:wp(4),
+        justifyContent:'space-between',
+       
       }}>
-        <View>
-        <TouchableOpacity style={{ height: hp(3.07),width: wp(6.66), marginTop: 15 }} onPress={ Back}>
+        <View style={{alignSelf:'center', marginLeft:wp(2),}}>
+        <TouchableOpacity style={{ height: hp(3.07),width: wp(6.66),}} onPress={ Back}>
           <Image source={image?.backicon} style={{ height: hp(3.07), width: wp(6.66), }} />
         </TouchableOpacity>
         </View>
-        <View style={{justifyContent:'center'}}>
+        <View style={{alignSelf:'center',}}>
         <Text style={{ fontSize: RFValue(35,812), fontWeight: 'bold', }}>{Name}</Text>
         </View>
-        <View>
-        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66),marginTop: 15 }} onPress={ notifi}>
+        <View style={{alignSelf:'center', marginRight:wp(5)}}>
+        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66)}} onPress={ notifi}>
           <Image source={image.notification} style={{ height: hp(3.07), width: wp(6.66), }} resizeMode={'contain'} />
         </TouchableOpacity>
         </View>
