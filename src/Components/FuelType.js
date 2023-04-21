@@ -5,18 +5,49 @@ import { useNavigation } from '@react-navigation/native'
 import { image } from '../Helper/ImageHelper';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
+// import { RadioButton } from 'react-native-paper';
+// import RadioGroup from 'react-native-radio-buttons-group';
+import RadioButton from './RadioButton';
+import { selectRadioButton } from '../Redux/action';
+import { connect, useDispatch } from 'react-redux';
+
+const FuelType = () => {
+
+    const [cod, setCOD] = useState(false);
+    const [upi, setUPI] = useState(false);
+    const [card, setCARD] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const onCodPress = (value) => {
+        setCOD(true)
+        setCARD(false)
+        setUPI(false)
+
+    };
+    const onUPIPress = (value) => {
+        setUPI(true)
+        setCARD(false)
+        setCOD(false)
+        dispatch({ type: "SELECT_RADIO_BUTTON", payload: "upi" })
+
+    };
+    const onCardPress = (value) => {
+        setCARD(true)
+        setUPI(false)
+        setCOD(false)
+        dispatch({ type: "SELECT_RADIO_BUTTON", payload: "card" })
 
 
-const FuelType = ({ navigation, ScreenNavigator, }) => {
+    };
+    const ScreenNavigator = () => {
+        if (cod == true) {
+            null
+        }
+        else {
+            navigate('payment')
 
-    const [selectedValue, setSelectedValue] = useState(null);
-    const options = [
-        { label: 'COD', value: 'option1' },
-        { label: 'UPI', value: 'option2' },
-        { label: 'CARD', value: 'option3' },
-    ];
-    const handleOptionPress = (value) => {
-        setSelectedValue(value);
+        }
     };
     const { navigate } = useNavigation();
     const [input1, setInput1] = useState('');
@@ -122,43 +153,45 @@ const FuelType = ({ navigation, ScreenNavigator, }) => {
                 </TouchableOpacity>
             </View>
 
-            <View style={{ flexDirection: 'row' }}>
-                {options.map((option) => (
-                    <TouchableOpacity
-                        key={option.value}
-                        onPress={() => handleOptionPress(option.value)}
-                        style={{
-                            flexDirection: 'row',
-                            marginTop: hp(4.92),
-                            marginLeft: wp(10.66),
-                        }}
-                    >
-                        <View
-                            style={{
-                                height: hp(2.95),
-                                width: wp(6.4),
-                                borderRadius: 12,
-                                borderWidth: 2,
-                                borderColor: '#000000',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginLeft: wp(1.33)
-                            }}
-                        >
-                            {selectedValue === option.value && (
-                                <View
-                                    style={{
-                                        height: hp(1.47),
-                                        width: wp(3.2),
-                                        borderRadius: 6,
-                                        backgroundColor: 'black',
-                                    }}
-                                />
-                            )}
-                        </View>
-                        <Text style={{ marginLeft: wp(2.66), fontSize: RFValue(20, 812) }}>{option.label}</Text>
-                    </TouchableOpacity>
-                ))}
+            <View style={{ marginTop: hp(3.69), alignItems: 'center', flexDirection: 'row' }}>
+
+                {/* #################################### this is second way to use radio bbutton ##########################*/}
+
+
+                {/* {radioOptions.map((option) => (
+                    <View key={option.value}>
+                    <RadioButton
+                    value={option.value}
+                    status={selectedOption === option.value ? 'checked' : 'unchecked'}
+                    onPress={() => setSelectedOption(option.value)}
+                    />
+                    <Text>{option.label}</Text>
+                    </View>
+                ))} */}
+
+                {/* <RadioGroup
+                    color='#000000'
+                    layout='row'
+                    radioButtons={radioButtons}
+                    onPress={onPressRadioButton}
+                    
+                /> */}
+                <RadioButton
+                    lable={'COD'}
+                    onpress={onCodPress}
+                    selectedValue={cod}
+
+                />
+                <RadioButton
+                    lable={'UPI'}
+                    onpress={onUPIPress}
+                    selectedValue={upi}
+                />
+                <RadioButton
+                    lable={'CARD'}
+                    onpress={onCardPress}
+                    selectedValue={card}
+                />
             </View>
             <View>
                 <TouchableOpacity style={{ height: 0, }} onPress={ScreenNavigator}>
@@ -172,8 +205,16 @@ const FuelType = ({ navigation, ScreenNavigator, }) => {
 
     )
 }
+// const mapStateToProps = state => ({
+//     selectedOption: state.selectedOption,
+//   });
 
-export default FuelType
+//   const mapDispatchToProps = dispatch => ({
+//     setSelectedOption: option => dispatch({ type: 'SET_SELECTED_OPTION', payload: option }),
+//   });
+
+
+export default (FuelType);
 
 const styles = StyleSheet.create({
     inputStyle: {
@@ -209,7 +250,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#cecece',
         borderRadius: 20,
         marginTop: hp(5),
-        padding: hp(1.74),
+        padding: hp(1.3),
+        paddingLeft: wp(4),
         height: hp(6.15),
         width: wp(45.33),
         marginLeft: wp(4),
@@ -254,3 +296,4 @@ const styles = StyleSheet.create({
     },
 
 })
+// 

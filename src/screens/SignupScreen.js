@@ -3,9 +3,21 @@ import React, { useState } from 'react'
 import { image } from '../Helper/ImageHelper'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { useSelector } from 'react-redux';
 
 
 const SignupScreen = ({ navigation }) => {
+
+  const choosen = useSelector(state => state.choosedValue);
+  console.log(choosen);
+  const onSignupPress = ()=>{
+    if(choosen=='option1'){
+      navigation.navigate('drawer')
+    }
+    else{
+      navigation?.navigate('bottam')
+    }
+  }
   const [press, setPress] = useState('')
   return (
     <SafeAreaView style={{ backgroundColor: '#F4C50B', flex: 1 }}>
@@ -62,7 +74,7 @@ const SignupScreen = ({ navigation }) => {
           </View>
         </KeyboardAvoidingView>
         <View>
-          <TouchableOpacity style={{ height: 0, }} onPress={() => navigation?.navigate('bottam')}>
+          <TouchableOpacity style={{ height: 0, }} onPress={onSignupPress}>
             <ImageBackground source={image.rectangle} style={styles.iconStyle} resizeMode={'contain'} >
               <Text style={styles.textStyle3}>Sign Up</Text>
             </ImageBackground>

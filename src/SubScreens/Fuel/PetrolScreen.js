@@ -20,7 +20,7 @@ const PetrolScreen = ({ navigation }) => {
          Name={'Petrol'}
        />
       <FuelType
-       ScreenNavigator={()=>navigation.navigate('payment')}
+      //  ScreenNavigator={()=>navigation.navigate('payment')}
       />
     </SafeAreaView>
   )

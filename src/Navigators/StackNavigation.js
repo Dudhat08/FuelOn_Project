@@ -23,6 +23,8 @@ import EthanolScreen from '../SubScreens/Fuel/EthanolScreen';
 import ChooseScreen from '../screens/ChooseScreen';
 import VendorCustomerScreen from '../screens/VendorCustomerScreen';
 import TrackerScreen from '../User/TrackerScreen';
+import ServiceProviderHome from '../ServiceProvider/ServiceProviderHome';
+import DrawerNavigation from './DrawerNavigation';
 
 const Stack = createNativeStackNavigator();
 const StackNavigation = ({navigation}) => {
@@ -140,8 +142,17 @@ const StackNavigation = ({navigation}) => {
         component={TrackerScreen}
         options={{headerShown:true}}
         />
-
-       
+        <Stack.Screen
+        name='SPH'
+        component={ServiceProviderHome}
+        options={{headerShown:false}}
+        
+        />
+        <Stack.Screen
+        name='drawer'
+        component={DrawerNavigation}
+        options={{headerShown:false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
 

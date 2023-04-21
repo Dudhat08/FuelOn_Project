@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
       }}>
 
         <Text style={{ fontSize: RFValue(40, 812), fontWeight: 'bold', marginLeft: wp(34.66) }}>FuelOn</Text>
-        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66), marginLeft: wp(22.13), marginTop: hp(1.82) }} onPress={() => navigation.navigate('Notifications')}>
+        <TouchableOpacity style={{ height: hp(3.07), width: wp(6.66), marginLeft: wp(20.13), marginTop: hp(1.82) }} onPress={() => navigation.navigate('Notifications')}>
           <Image source={image.notification} style={{ height: hp(3.07), width: wp(6.66), }} resizeMode={'contain'} />
         </TouchableOpacity>
       </View>
