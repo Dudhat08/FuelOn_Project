@@ -19,7 +19,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "gesture": "^0.1.0",
     "react": "18.2.0",
-    "react-native": "^0.71.5",
+    "react-native": "^0.71.7",
     "react-native-animatable": "^1.3.3",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-keyboard-aware-scrollview": "^2.1.0",
