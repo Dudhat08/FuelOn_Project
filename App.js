@@ -10,8 +10,6 @@ const App = () => {
     <Provider store={store}>
       <StackNavigation />
     </Provider>
-
-
   )
 }
 
