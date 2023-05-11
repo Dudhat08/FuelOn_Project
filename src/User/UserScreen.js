@@ -5,9 +5,12 @@ import * as Animatable from 'react-native-animatable';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import Header from '../Components/Header';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const UserScreen = ({ navigation }) => {
+
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [Profile,setProfile] = useState('');
   // const dialPadUrl = `tel:${phoneNumber}`;
   // Linking.openURL('www.google.com')
   // .catch((err) => console.error('Failed to open URL: ', err));
@@ -16,6 +19,7 @@ const UserScreen = ({ navigation }) => {
   const [modalVisible1, setModalVisible1] = useState(false);
   const [modalVisible2, setModalVisible2] = useState(false);
   const [modalVisible3, setModalVisible3] = useState(false);
+
 
   const toggleModal = () => {
     setModalVisible(!modalVisible)
@@ -30,6 +34,22 @@ const UserScreen = ({ navigation }) => {
   const toggleModal3 = () => {
     setModalVisible3(!modalVisible3);
   };
+  const getName = async()=>{
+    const Name = await AsyncStorage.getItem('NAME_DATA');
+    setProfile(Name);
+    console.log(Name);
+    
+  }
+  const clearAll = async () => {
+    try {
+      await AsyncStorage.clear();
+      navigation.navigate('login')
+    } catch(e) {
+      console.log(e);
+    }
+  
+    console.log('Done.')
+  }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#F4C50B', }}>
       <Header
@@ -49,8 +69,11 @@ const UserScreen = ({ navigation }) => {
           }}>
           <Image source={image.account} style={{ height: hp(12.31), width: wp(26.66) }} resizeMode={'contain'} />
         </View>
+        <View style={{alignItems:'center',marginVertical:hp(2)}}>
+        <Text style={{fontSize:RFValue(30,812),fontWeight:'bold',}}>Dharmik Dudhat</Text>
+        </View>
 
-        <View style={{ borderWidth: 1, width: wp(97.33), marginTop: hp(4.92) }}></View>
+        <View style={{ borderWidth: 1, width: wp(97.33),}}></View>
       </View>
       <View style={{marginHorizontal:wp(8)}}>
         <Modal
@@ -246,6 +269,11 @@ const UserScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
       </View>
+      <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
+        <TouchableOpacity onPress={clearAll}>
+          <Text style={{fontSize:RFValue(30,812),fontWeight:'bold',textDecorationLine:'underline'}}>Log out</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   )
 }
@@ -277,4 +305,5 @@ const styles = StyleSheet.create({
     fontSize: 15
 
   },
+
 })
