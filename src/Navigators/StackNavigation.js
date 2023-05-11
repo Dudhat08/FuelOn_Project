@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Button, Image } from 'react-native'
+import { StyleSheet, Text, View, Button, Image } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import SignupScreen from '../screens/SignupScreen';
@@ -27,7 +27,7 @@ import ServiceProviderHome from '../ServiceProvider/ServiceProviderHome';
 import DrawerNavigation from './DrawerNavigation';
 
 const Stack = createNativeStackNavigator();
-const StackNavigation = ({navigation}) => {
+const StackNavigation = ({ navigation }) => {
 
   return (
     <NavigationContainer>
@@ -35,10 +35,6 @@ const StackNavigation = ({navigation}) => {
         <Stack.Screen
           name='splash'
           component={SplashScreen}
-          options={{ headerShown: false }} />
-        <Stack.Screen
-          name='vc'
-          component={VendorCustomerScreen}
           options={{ headerShown: false }} />
         <Stack.Screen
           name='choose'
@@ -61,97 +57,101 @@ const StackNavigation = ({navigation}) => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='Home'
-        component={HomeScreen}
-        options={{
-          headerShown:false
-          //title:'FuelOn',
-        
-        // headerRight: () => (
-        //  <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
-        //   <Image source={image.notification} resizeMode={'contain'} style={{height:25,width:25}} />
-        //  </TouchableOpacity>
-        // ),
-        //   headerStyle:{
-        //     backgroundColor:'#F4C50B',
-        //   },
-        // headerTintColor:'#000000',
-        // headerTitleStyle:{
-        //   fontWeight:'bold',
-        //   fontSize:30
-        // }
-      }}
-        />
-        <Stack.Screen 
-        name='Notifications'
-        component={NotificationScreen}
-        options={{headerShown:false}}
+          name='vc'
+          component={VendorCustomerScreen}
+          options={{ headerShown: false }} />
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{
+            headerShown: false
+            //title:'FuelOn',
+
+            // headerRight: () => (
+            //  <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
+            //   <Image source={image.notification} resizeMode={'contain'} style={{height:25,width:25}} />
+            //  </TouchableOpacity>
+            // ),
+            //   headerStyle:{
+            //     backgroundColor:'#F4C50B',
+            //   },
+            // headerTintColor:'#000000',
+            // headerTitleStyle:{
+            //   fontWeight:'bold',
+            //   fontSize:30
+            // }
+          }}
         />
         <Stack.Screen
-        name='petrol'
-        component={PetrolScreen}
-        options={{headerShown:false}}
+          name='Notifications'
+          component={NotificationScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='diesel'
-        component={DieselScreen}
-        options={{headerShown:false}}
+          name='petrol'
+          component={PetrolScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='gas'
-        component={GasScreen}
-        options={{headerShown:false}}
+          name='diesel'
+          component={DieselScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='mechanic'
-        component={MechanicScreen}
-        options={{headerShown:false}}
+          name='gas'
+          component={GasScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='puncture'
-        component={PunctureScreen}
-        options={{headerShown:false}}
+          name='mechanic'
+          component={MechanicScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='payment'
-        component={Payment}
-        options={{headerShown:false}}
+          name='puncture'
+          component={PunctureScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='lpg'
-        component={LpgScreen}
-        options={{headerShown:false}}
+          name='payment'
+          component={Payment}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='cng'
-        component={CngScreen}
-        options={{headerShown:false}}
+          name='lpg'
+          component={LpgScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='biodiesel'
-        component={BiodieselScreen}
-        options={{headerShown:false}}
+          name='cng'
+          component={CngScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='ethanol'
-        component={EthanolScreen}
-        options={{headerShown:false}}
+          name='biodiesel'
+          component={BiodieselScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='tracker'
-        component={TrackerScreen}
-        options={{headerShown:true}}
+          name='ethanol'
+          component={EthanolScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name='SPH'
-        component={ServiceProviderHome}
-        options={{headerShown:false}}
-        
+          name='tracker'
+          component={TrackerScreen}
+          options={{ headerShown: true }}
         />
         <Stack.Screen
-        name='drawer'
-        component={DrawerNavigation}
-        options={{headerShown:false}}
+          name='SPH'
+          component={ServiceProviderHome}
+          options={{ headerShown: false }}
+
+        />
+        <Stack.Screen
+          name='drawer'
+          component={DrawerNavigation}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

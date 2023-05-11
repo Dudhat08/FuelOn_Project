@@ -60,16 +60,16 @@ const AutomobileService = () => {
                 />
             </View>
             <View style={styles.inputStyle}>
-                {/* <TextInput
+                <TextInput
           autoCapitalize='none'
           autoCorrect={false}
-          fontSize={20}
+          fontSize={RFValue(20,812)}
           flex={1}
           marginLeft={7}
           placeholder="Enter your Address"
+          value={location}
 
-        /> */}
-                <Text style={{ fontSize: RFValue(20, 812), justifyContent: 'center' }}>{location}</Text>
+        />
             </View>
 
             <TouchableOpacity style={{ flexDirection: 'row', marginTop: hp(1.46), width: 235, height: hp(3.69), }} onPress={() => setLocation(current)} >

@@ -1,5 +1,5 @@
 import { Button, Image, StyleSheet, Text, View, TouchableOpacity, TextInput, ImageBackground, SafeAreaView } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { useNavigation } from '@react-navigation/native'
 import { image } from '../Helper/ImageHelper';
@@ -10,12 +10,27 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 import RadioButton from './RadioButton';
 import { selectRadioButton } from '../Redux/action';
 import { connect, useDispatch } from 'react-redux';
+import Geolocation from '@react-native-community/geolocation';
 
 const FuelType = () => {
 
     const [cod, setCOD] = useState(false);
     const [upi, setUPI] = useState(false);
     const [card, setCARD] = useState(false);
+    const [location, setLocation] = useState(null);
+    const [current, setCurrent] = useState(null);
+    console.log(location);
+
+    useEffect(() => {
+        Geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+                setCurrent(`${latitude}, ${longitude}`);
+            },
+            error => console.log(error),
+            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+        );
+    }, []);
 
     const dispatch = useDispatch();
 
@@ -94,11 +109,12 @@ const FuelType = () => {
                     flex={1}
                     marginLeft={wp(1.86)}
                     placeholder="Enter your Address"
+                    value={location}
 
                 />
             </View>
 
-            <TouchableOpacity style={{ flexDirection: 'row', marginTop: hp(1.75), width: 235, height: hp(3.69), alignItems: 'center', alignSelf: 'center' }}>
+            <TouchableOpacity style={{ flexDirection: 'row', marginTop: hp(1.75), width: 235, height: hp(3.69), alignItems: 'center', alignSelf: 'center' }} onPress={() => setLocation(current)}>
                 <Image source={image.location} style={{ height: hp(4.69), width: wp(8) }} />
                 <Text style={{
                     fontSize: RFValue(22, 812),

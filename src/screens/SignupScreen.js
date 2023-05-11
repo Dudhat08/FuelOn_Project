@@ -1,20 +1,105 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, Button, ImageBackground } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { image } from '../Helper/ImageHelper'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
 
 
 const SignupScreen = ({ navigation }) => {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name,setName] = useState('');
+  const storeName = async()=>{
+    try {
+      await AsyncStorage.setItem('NAME_DATA',name);
+      console.log("name was setted")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const storeDataFromSP = async () => {
+    try {
+      await AsyncStorage.setItem('SP_DATA', email);
+      console.log("saved to asyncStorage");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  const storeDataFromClient = async () => {
+    try {
+      await AsyncStorage.setItem('CLIENT_DATA', email);
+      console.log("saved to asyncStorage");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  const onSignupFromSP = async () => {
+    try {
+      await auth()
+        .createUserWithEmailAndPassword(`${email}`, `${password}`)
+        .then(() => {
+          console.log('User account created & signed in!');
+        });
+      storeDataFromSP();
+      // navigation.navigate('bottam');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        Alert.alert("You already have an account");
+      }
+
+      if (error.code === 'auth/invalid-email') {
+        Alert.alert("You email is invalid")
+      }
+      if (error.code === 'auth/weak-password') {
+        Alert.alert("Your password is very weak make a strong password")
+      }
+      console.error(error);
+
+    }
+
+  }
+  const onSignupFromClient = async () => {
+    try {
+      await auth()
+        .createUserWithEmailAndPassword(`${email}`, `${password}`)
+        .then(() => {
+          console.log('User account created & signed in!');
+        });
+      storeDataFromClient();
+      // navigation.navigate('bottam');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        Alert.alert("You already have an account");
+      }
+
+      if (error.code === 'auth/invalid-email') {
+        Alert.alert("You email is invalid")
+      }
+      if (error.code === 'auth/weak-password') {
+        Alert.alert("Your password is very weak make a strong password")
+      }
+      console.error(error);
+
+    }
+
+  }
+  
+
   const choosen = useSelector(state => state.choosedValue);
   console.log(choosen);
-  const onSignupPress = ()=>{
-    if(choosen=='option1'){
+  const onSignupPress = () => {
+    storeName();
+    if (choosen == 'option1') {
+      onSignupFromSP();
       navigation.navigate('drawer')
     }
-    else{
+    else {
+      onSignupFromClient();
       navigation?.navigate('bottam')
     }
   }
@@ -39,6 +124,7 @@ const SignupScreen = ({ navigation }) => {
                 flex={1}
                 marginLeft={7}
                 placeholder="Name"
+                onChangeText={(txt)=>setName(txt)}
 
               />
             </View>
@@ -51,6 +137,7 @@ const SignupScreen = ({ navigation }) => {
                 flex={1}
                 marginLeft={7}
                 placeholder="Your Email"
+                onChangeText={(txt) => setEmail(txt)}
               />
             </View>
             <View style={styles.inputStyle2}>
@@ -63,6 +150,7 @@ const SignupScreen = ({ navigation }) => {
                 marginLeft={7}
                 secureTextEntry={press == false ? true : false}
                 placeholder="Password"
+                onChangeText={(txt) => setPassword(txt)}
               />
               <TouchableOpacity onPress={() => {
                 setPress(!press);

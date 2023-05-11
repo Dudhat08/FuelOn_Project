@@ -10,7 +10,7 @@ const reducer=(state = initialState, action)=> {
     case 'SELECT_RADIO_BUTTON':
       return { ...state, radioButtonValue: action.payload };
     case 'SELECT_USER_TYPE':
-      console.log('pppppppp',action);
+      // console.log('pppppppp',action);
       return { ...state, choosedValue: action.payload };
     default:
       return state;

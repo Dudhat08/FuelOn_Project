@@ -1,5 +1,5 @@
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, Modal, Linking } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { image } from '../Helper/ImageHelper'
 import * as Animatable from 'react-native-animatable';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
@@ -8,7 +8,10 @@ import Header from '../Components/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const UserScreen = ({ navigation }) => {
-
+  useEffect(() => {
+   getName();
+  }, [])
+  
   const [phoneNumber, setPhoneNumber] = useState('');
   const [Profile,setProfile] = useState('');
   // const dialPadUrl = `tel:${phoneNumber}`;
@@ -70,7 +73,7 @@ const UserScreen = ({ navigation }) => {
           <Image source={image.account} style={{ height: hp(12.31), width: wp(26.66) }} resizeMode={'contain'} />
         </View>
         <View style={{alignItems:'center',marginVertical:hp(2)}}>
-        <Text style={{fontSize:RFValue(30,812),fontWeight:'bold',}}>Dharmik Dudhat</Text>
+        <Text style={{fontSize:RFValue(30,812),fontWeight:'bold',}}>{Profile}</Text>
         </View>
 
         <View style={{ borderWidth: 1, width: wp(97.33),}}></View>

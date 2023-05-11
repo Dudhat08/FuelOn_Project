@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 
 const VendorCustomerScreen = ({ navigation }) => {
 
+    
     const dispatch = useDispatch();
     
     const onPressOption1 = () =>{
@@ -18,7 +19,7 @@ const VendorCustomerScreen = ({ navigation }) => {
         navigation.navigate('signUp')
     }
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#F4C50B', justifyContent:'space-around'}}>
+        <View style={{ flex: 1, backgroundColor: '#F4C50B', justifyContent:'center'}}>
             <View style={{
                 marginLeft:wp(11.46),
                 shadowColor: '#171717',
@@ -26,23 +27,25 @@ const VendorCustomerScreen = ({ navigation }) => {
                 shadowOpacity: 0.2,
                 shadowRadius: 3,
             }}>
-                <Text style={{ fontSize: RFValue(40,812),fontWeight: 'bold'}}>Welcome</Text>
-                <Text style={{ fontSize: RFValue(40,812),fontWeight: 'bold',marginTop:hp(1.23)}}>FuelOn</Text>
+                <Text style={{ fontSize: RFValue(50,812),fontWeight: 'bold'}}>Welcome</Text>
+                <Text style={{ fontSize: RFValue(50,812),fontWeight: 'bold',marginTop:hp(1.23)}}>FuelOn</Text>
             </View>
-            <View style={{alignItems:'center',marginTop:hp(-15)}}>
+            <View style={{marginVertical:20,}}>
+            <View style={{alignItems:'center',marginVertical:40}}>
             <TouchableOpacity style={styles.TextStyle} onPress={onPressOption1}>
                 <Text style={{ fontSize:RFValue (24,812)}}>Service provider</Text>
             </TouchableOpacity>
             </View>
 
-            <View  style={{alignItems:'center',marginTop:hp(-20)}}>
+            <View  style={{alignItems:'center'}}>
             <TouchableOpacity style={styles.TextStyle} onPress={onPressOption2}>
                 <Text style={{ fontSize: RFValue(24,812) }}>Need a service</Text>
             </TouchableOpacity>
             </View>
+            </View>
            
 
-            <TouchableOpacity style={{alignItems:'center'}} onPress={() => navigation.navigate('login')} >
+            {/* <TouchableOpacity style={{alignItems:'center'}} onPress={() => navigation.navigate('login')} >
                 <Text style={{
                     fontSize: RFValue(22,812),
                     fontWeight: 'bold',
@@ -52,10 +55,10 @@ const VendorCustomerScreen = ({ navigation }) => {
                     shadowRadius: 3,
                     alignItems:'center'
                 }}>Already have an account?</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
 
-        </SafeAreaView>
+        </View>
     )
 }
 
