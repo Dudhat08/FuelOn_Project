@@ -3,8 +3,8 @@ import React, { useRef, useState } from 'react'
 import { SearchBar } from '../Components/SearchBar.js';
 import { image } from '../Helper/ImageHelper.js';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { baseGestureHandlerProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon.js';
-import BottomNavigation from '../Navigators/BottomNavgation.js';
+import { baseGestureHandlerProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon.js'
+;
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import FuelButton from '../Components/FuelButton.js';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";

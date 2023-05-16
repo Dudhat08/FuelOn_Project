@@ -36,6 +36,9 @@ const ServiceProviderHome = ({navigation}) => {
         </TouchableOpacity>
         </View>
       </View>
+      <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+        <Text>Home</Text>
+      </View>
       </SafeAreaView>
   )
 }

@@ -3,34 +3,36 @@ import React from 'react'
 import MapView, { AnimatedRegion, MarkerAnimated } from 'react-native-maps'
 import { Marker } from 'react-native-maps';
 import { image } from '../Helper/ImageHelper';
+import Header from '../Components/Header';
 
 const TrackerScreen = () => {
     return (
+        
 
-        <View style={{ flex: 1 }}>
-            <MapView
-                zoomEnabled={true}
-                scrollEnabled={true}
-                style={StyleSheet.absoluteFill}
-                initialRegion={{
-                    latitude: 21.1702,
-                    longitude: 72.8311,
-                    latitudeDelta: 0.04,
-                    longitudeDelta: 0.0421,
-                }}
-            >
-                <Marker
-                    draggable
-                    coordinate={{ latitude: 21.1702, longitude: 72.8311 }}
-                    onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            <View style={{flex:1}}>
+                <MapView
+                    zoomEnabled={true}
+                    scrollEnabled={true}
+                    style={StyleSheet.absoluteFill}
+                    initialRegion={{
+                        latitude: 21.1702,
+                        longitude: 72.8311,
+                        latitudeDelta: 0.04,
+                        longitudeDelta: 0.0421,
+                    }}
                 >
-                    <Image
-                        source={image.pin}
-                        style={{ height: 35, width: 35 }}
-                    />
-                </Marker>
-            </MapView>
-        </View>
+                    <Marker
+                        draggable
+                        coordinate={{ latitude: 21.1702, longitude: 72.8311 }}
+                        onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+                    >
+                        <Image
+                            source={image.pin}
+                            style={{ height: 35, width: 35 }}
+                        />
+                    </Marker>
+                </MapView>
+            </View>
 
     )
 }
