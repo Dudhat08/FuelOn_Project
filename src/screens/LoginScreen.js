@@ -20,21 +20,25 @@ const LoginScreen = ({ navigation }) => {
     console.log(choosen);
     if (choosen == 'option1') {
       onLoginFromSP();
-      navigation.navigate('drawer')
+      
     }
     else {
       onLoginFromClient();
-      navigation?.navigate('bottam')
+      navigation?.navigate('clientDrawer')
     }
   }
   const onLoginFromSP = async () => {
+    let flag = 0;
     try {
-      await auth().signInWithEmailAndPassword(`${email}`, `${password}`).then(
-        console.log("user logged in")
-      )
+      await auth().signInWithEmailAndPassword(`${email}`, `${password}`);
       storeDataFromSP();
     } catch (error) {
+      flag =1;
+      console.log(error.code,"help help help");
       Alert.alert("Please Enter valid email or password");
+    }
+    if(flag !== 1){
+      navigation.navigate('drawer')
     }
 
   }

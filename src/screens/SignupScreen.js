@@ -6,13 +6,37 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
-
+import firestore from '@react-native-firebase/firestore';
 
 const SignupScreen = ({ navigation }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name,setName] = useState('');
+  const getfuel = async()=>{
+    try {
+      const data = await AsyncStorage.getItem('FUEL_DATA')
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const geMechanic = async()=>{
+    try {
+      const data = await AsyncStorage.getItem('MECHANIC_DATA')
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const getPuncure = async()=>{
+    try {
+      const data = await AsyncStorage.getItem('PUNCTURE_DATA')
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const storeName = async()=>{
     try {
       await AsyncStorage.setItem('NAME_DATA',name);
@@ -45,6 +69,10 @@ const SignupScreen = ({ navigation }) => {
         .then(() => {
           console.log('User account created & signed in!');
         });
+        await firestore().collection('Service_Provider').add({
+          name: `${name}`,
+          email :`${email}`,
+        }).then(console.log("data saved to firestore database"))
       storeDataFromSP();
       // navigation.navigate('bottam');
     } catch (error) {
@@ -91,8 +119,8 @@ const SignupScreen = ({ navigation }) => {
   
 
   const choosen = useSelector(state => state.choosedValue);
-  console.log(choosen);
   const onSignupPress = () => {
+    console.log(choosen);
     storeName();
     if (choosen == 'option1') {
       onSignupFromSP();
@@ -100,7 +128,7 @@ const SignupScreen = ({ navigation }) => {
     }
     else {
       onSignupFromClient();
-      navigation?.navigate('bottam')
+      navigation?.navigate('clientDrawer')
     }
   }
   const [press, setPress] = useState('')

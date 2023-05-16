@@ -4,7 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import SignupScreen from '../screens/SignupScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from '../screens/SplashScreen';
-import HomeScreen from '../screens/HomeScreen';
 import BottomNavigation from './BottomNavgation';
 import LoginScreen from '../screens/LoginScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -25,6 +24,7 @@ import VendorCustomerScreen from '../screens/VendorCustomerScreen';
 import TrackerScreen from '../User/TrackerScreen';
 import ServiceProviderHome from '../ServiceProvider/ServiceProviderHome';
 import DrawerNavigation from './DrawerNavigation';
+import ClientDrawer from './ClientDrawer';
 
 const Stack = createNativeStackNavigator();
 const StackNavigation = ({ navigation }) => {
@@ -57,10 +57,16 @@ const StackNavigation = ({ navigation }) => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name='clientDrawer'
+          component={ClientDrawer}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
           name='vc'
           component={VendorCustomerScreen}
           options={{ headerShown: false }} />
-        <Stack.Screen
+        {/* <Stack.Screen
           name='Home'
           component={HomeScreen}
           options={{
@@ -81,7 +87,7 @@ const StackNavigation = ({ navigation }) => {
             //   fontSize:30
             // }
           }}
-        />
+        /> */}
         <Stack.Screen
           name='Notifications'
           component={NotificationScreen}
@@ -139,8 +145,9 @@ const StackNavigation = ({ navigation }) => {
         />
         <Stack.Screen
           name='tracker'
+          
           component={TrackerScreen}
-          options={{ headerShown: true }}
+          options={{ headerShown: true,title:'Track my order'}}
         />
         <Stack.Screen
           name='SPH'

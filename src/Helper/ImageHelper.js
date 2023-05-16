@@ -37,7 +37,8 @@ export const image = {
     privacy:require('../../assets/shield.png'),
     conditions:require('../../assets/terms-and-conditions.png'),
     phoneCall:require('../../assets/phone-call.png'),
-    check:require('../../assets/check-mark.png'),
+    check : require('../../assets/check.png'),
     pin:require('../../assets/pin.png'),
+    null : require('../../assets/null.png'),
 
 }

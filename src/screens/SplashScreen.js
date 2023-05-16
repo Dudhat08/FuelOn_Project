@@ -21,7 +21,7 @@ const SplashScreen = ({ navigation }) => {
         console.log("splash screen to direct vc");
       }
       else if (valueOfClient !== null) {
-        navigation?.navigate('bottam')
+        navigation?.navigate('clientDrawer')
         console.log("splash screen to direct home");
       }
       else if (valueOfSP !== null) {
